@@ -20,8 +20,8 @@ function Upload_page() {
       const formData=new FormData()
       formData.append('file',file)
       try{
-          await axios.post("URL-backend",formData)
-        navigate("/form-link")
+        // await axios.post("URL-backend",formData)
+        navigate("/form")
       }catch(error){
         console.log("ERROR:",error)
       }
@@ -35,7 +35,7 @@ function Upload_page() {
           <FontAwesomeIcon icon={faCloudArrowUp} />
           <h5>Upload Resume</h5>
         </Dotted>
-        <input type="file" />
+        <input type="file" ref={fileInputRef}/>
         <button onClick={handleOnClick}>Upload</button>
       </div>
     </UploadSection>
