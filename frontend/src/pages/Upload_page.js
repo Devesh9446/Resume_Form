@@ -4,7 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloudArrowUp } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Upload_page() {
   const navigate =useNavigate() 
@@ -17,7 +18,15 @@ function Upload_page() {
   const handleFile = (event) =>{
     setFile(event.target.files[0])
   };
-  
+  const options={
+    position:"bottom-center",
+    autoClose: 3000, 
+    hideProgressBar: false, 
+    closeOnClick: true, 
+    pauseOnHover: true, 
+    draggable: true, 
+    progress: undefined,
+  }
   const handleOnClick= async()=>{
     if(file){
       const formData=new FormData()
@@ -30,19 +39,25 @@ function Upload_page() {
         console.log("ERROR:",error)
       }
     }
+    else{
+      toast.warn("Please select a file to upload.",options);
+    }
   }
 
   return (
-    <UploadSection>
-      <div>
-        <Dotted onClick={handleIconClick}>
-          <FontAwesomeIcon icon={faCloudArrowUp} />
-          <h5>Upload Resume</h5>
-        </Dotted>
-        <input type="file"  accept=".pdf" onChange={handleFile} ref={fileInputRef}/>
-        <button onClick={handleOnClick}>Upload</button>
-      </div>
-    </UploadSection>
+    <div>
+      <UploadSection>
+        <div className="second">
+          <Dotted onClick={handleIconClick}>
+            <FontAwesomeIcon icon={faCloudArrowUp} />
+            <h5>Upload Resume</h5>
+          </Dotted>
+          <input type="file"  accept=".pdf" onChange={handleFile} ref={fileInputRef}/>
+          <button onClick={handleOnClick}>Upload</button>
+        </div>
+      </UploadSection>
+      <ToastContainer />
+    </div>
   )
 }
 
