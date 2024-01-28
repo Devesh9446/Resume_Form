@@ -21,7 +21,7 @@ function Form_page() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("URL-backend-for-form-data", formData);
+      await axios.post("Url", formData);
     } catch (error) {
       console.log("ERROR:", error);
     }

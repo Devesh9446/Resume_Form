@@ -1,14 +1,17 @@
 import {Router} from 'express'
-import {formController} from "../controllers/form.conttroller.js"
-import {upload} from "../middleware/multer.middleware"
+import {upload} from "../middleware/multer.middleware.js"
 
-Router.route("/submit").post(
+const router=Router()
+
+router.route("/submit").post(
     upload.fields([
         {
             name:"file",
             maxCount:1
         }
     ])
-,formController)
+,(_, res) => {
+    res.send('File uploaded successfully!');
+})
 
-export default Router;
+export default router;
