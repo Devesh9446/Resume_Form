@@ -4,7 +4,9 @@ import cors from 'cors'
 
 app.use(cors({origin:process.env.CORS}))
 
-import formRoutes from './routes/form.routes.js'
-app.use("/api/v1/users",formRoutes)
+import resumeRoutes from './routes/resume.routes.js'
+import userRoutes from './routes/user.routes.js'
+app.use("/api/v1/users",resumeRoutes)
+app.use("/api/v1/users",userRoutes)
 
 export {app}; 

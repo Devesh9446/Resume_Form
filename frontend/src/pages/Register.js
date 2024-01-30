@@ -29,31 +29,45 @@ function Register() {
         setValues({...values,[name]:value})
     }
 
-    const handelSubmit=(event)=>{
+    const handelSubmit=async(event)=>{
         event.preventDefault()
         try{
-            handleValidation({
-                password:values.password,
-                confirmPassword:values.confirmPassword
-            })
-            axios.post()
+            if(handleValidation(values))
+            {
+              await axios.post("http://localhost:8000/api/v1/users/registration",values)
+            }
         }catch(error){
             console.log("ERROR:",error)
         }
     }
 
     const handleValidation=(event)=>{
-        const {password,confirmPassword}=event;
-        console.log(password)
-        console.log("called")
-        console.log(confirmPassword)
-        if(password!==confirmPassword)
+        const {username,email,password,confirmPassword}=event;
+        if(!username)
         {
-            toast.error("Password and Confirm Password Must be same",options)
+          toast.error("username is required",options)
+          return false;
         }
-        if(password.lenght()<8)
+        else if(!email)
         {
-            toast.error("Password Must be greater than 8 Characters",options)
+          console.log(email)
+          toast.error("email is required",options)
+          return false;
+        }
+        else if(!password)
+        {
+          toast.error("password is required",options)
+          return false;
+        }
+        else if(password.length<8)
+        {
+          toast.error("Password must be greater than 8 characters",options)
+          return false;
+        }
+        else if(password !==confirmPassword)
+        {
+          toast.error("Password and Confirm Password must be same",options)
+          return false;
         }
     }
 
@@ -66,9 +80,9 @@ function Register() {
                     <h1>Login</h1>
                 </div>
                 <input type="text" placeholder='Username' name="username" onChange={e=>handleChange(e)}/>
-                <input type="email" placeholder='abc@email.com' name="mail" onChange={e=>handleChange(e)}/>
+                <input type="email" placeholder='abc@email.com' name="email" onChange={e=>handleChange(e)}/>
                 <input type="password" placeholder='Password' name="password" onChange={e=>handleChange(e)}/>
-                <input type="password" placeholder='Confirm Password' name="password" onChange={e=>handleChange(e)}/>
+                <input type="password" placeholder='Confirm Password' name="confirmPassword" onChange={e=>handleChange(e)}/>
                 <button type="submit">Create User</button>
                 <span>
                     Already have an account ? <Link to="/login">Login</Link>

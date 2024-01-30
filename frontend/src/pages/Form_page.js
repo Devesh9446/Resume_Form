@@ -16,7 +16,7 @@ function Form_page() {
     Achievements:[""],
   })
 
-  useEffect(()=>{
+  useEffect(()=>{ 
     const fetchData = async () => {
       try {
         const { data } = await axios.get("http://localhost:8000/api/v1/users/form");

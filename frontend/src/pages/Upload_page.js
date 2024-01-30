@@ -33,7 +33,7 @@ function Upload_page() {
       formData.append('file',file)
       // console.log(formData)
       try{
-        await axios.post("http://localhost:8000/api/v1/users/submit",formData)
+        await axios.post("http://localhost:8000/api/v1/users/upload",formData)
         navigate("/form")
       }catch(error){
         console.log("ERROR:",error)

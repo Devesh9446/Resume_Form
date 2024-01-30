@@ -3,7 +3,7 @@ import {apiError} from "../utils/apiError.js"
 import {apiResponse} from "../utils/apiResponse.js"
 import {user} from "../models/user.model.js"
 
-const form_submit=asyncHandler(async(req,res)=>{
+const form=asyncHandler(async(req,res)=>{
    const {github,projects,education,linkedIn,interests,technology}=req.body;
    let newUser
    try{
@@ -25,5 +25,5 @@ const form_submit=asyncHandler(async(req,res)=>{
 })
 
 export {
-    form_submit
+    form
 }
