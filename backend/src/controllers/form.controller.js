@@ -5,8 +5,9 @@ import {user} from "../models/user.model.js"
 
 const form_submit=asyncHandler(async(req,res)=>{
    const {github,projects,education,linkedIn,interests,technology}=req.body;
+   let newUser
    try{
-        const newUser=await user.create({
+        newUser=await user.create({
              github:github||"",
              projects:projects||"",
              education:education||"",

@@ -1,25 +1,36 @@
 import mongoose from 'mongoose'
 
 const formSchema= new mongoose.Schema({
-    github:{
-        type:String,
+    Name:{
+            type:String,
     },
-    linkedIn:{
-        type:String,
+    Email:{
+            type:String,
     },
-    education:[{
-        type:String,
-    }],
-    projects:[{
-        type:String,
-    }],
-    interests:[{
-        type:String,
-    }],
-    technology:[{
-        type:String,
-    }]
-
+    Phone:{
+            type:String,
+    },
+    Education:{
+            type:[""],
+    },
+    WorkExperinence:{
+            type:[""],
+    },
+    PersonalProjects:{
+        type:[""],        
+    },
+    Skills:{
+        type:[""],        
+    },
+    GitHub:{
+        type:String,        
+    },
+    LinkedIn:{
+        type:String,        
+    },
+    Achievements:{
+        type:[""],        
+    }
 },{timestamps:true})
 
 export const user = mongoose.model("user",formSchema)
