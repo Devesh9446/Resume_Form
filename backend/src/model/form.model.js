@@ -33,4 +33,4 @@ const formSchema= new mongoose.Schema({
     }
 },{timestamps:true})
 
-export const user = mongoose.model("user",formSchema)
+export const form = mongoose.model("form",formSchema)

@@ -61,15 +61,53 @@ function Upload_page() {
   )
 }
 
-const UploadSection=styled.div`
-{
-
-}
-`;
-const Dotted=styled.div`
-{
-
-}
+/* Define CSS styles for the UploadSection */
+const UploadSection = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 `;
 
-export default Upload_page
+/* Define CSS styles for the Dotted container */
+const Dotted = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+
+
+Dotted h5 {
+  margin-top: 10px;
+}
+
+Dotted svg {
+  font-size: 48px;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+/* Style the file input */
+input[type="file"] {
+  display: none;
+}
+
+/* Style the button */
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+`;
+
+export default Upload_page;
+

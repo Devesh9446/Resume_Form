@@ -7,7 +7,7 @@ const router=Router()
 router.route("/submit").post(
     upload.fields([
         {
-            name:"file",
+            name:"file", 
             maxCount:1
         }
     ])
